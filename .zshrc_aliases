@@ -1,0 +1,5 @@
+# aliases
+
+alias pwsh='/usr/local/microsoft/powershell/7/pwsh'
+alias cp='cp -i'
+alias fvim='nvim $(fzf)'

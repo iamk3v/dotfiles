@@ -104,13 +104,7 @@ source <(fzf --zsh)
 # For a full list of active aliases, run `alias`.
 
 if [ -f ~/.zsh_aliases ]; then
-	. ~/.zsh_aliases
+ 	. ~/.zsh_aliases
 fi
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias pwsh='/usr/local/microsoft/powershell/7/pwsh'
-alias cp="cp -i" # confirm before overwrite"
 
 source $ZSH/oh-my-zsh.sh

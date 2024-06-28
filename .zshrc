@@ -75,11 +75,13 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
+    fzf
     fzf-tab
 )
 
 #Set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_COMMAND='fd -H --type f'
+#export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
 source <(fzf --zsh)
 
@@ -104,7 +106,7 @@ source <(fzf --zsh)
 # For a full list of active aliases, run `alias`.
 
 if [ -f ~/.zsh_aliases ]; then
- 	. ~/.zsh_aliases
+ 	source ~/.zsh_aliases
 fi
 
 source $ZSH/oh-my-zsh.sh

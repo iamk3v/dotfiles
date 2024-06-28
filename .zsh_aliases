@@ -2,5 +2,5 @@
 
 alias pwsh='/usr/local/microsoft/powershell/7/pwsh'
 alias cp='cp -i'
-alias fvim='nvim $(fzf)'
+alias fvim='nvim $(fzf-tmux -p)'
 alias tls='tmux ls'

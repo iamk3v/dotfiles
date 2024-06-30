@@ -1,6 +1,20 @@
-# aliases
+# Aliases
 
 alias pwsh='/usr/local/microsoft/powershell/7/pwsh'
-alias cp='cp -i'
 alias fvim='nvim $(fzf-tmux -p)'
 alias tls='tmux ls'
+
+# Navigation
+alias dotfiles='cd ~/git/dotfiles'
+
+# Easy report
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias mkdir='mkdir -v'
+alias rm='rm -i'
+alias rmf='rm -rf'
+
+# Typos
+alias :q='exit'
+alias help='man'
+alias quit='exit'

@@ -1,11 +1,16 @@
 # Aliases
 
 alias pwsh='/usr/local/microsoft/powershell/7/pwsh'
-alias fvim='nvim $(fzf-tmux -p)'
+#alias fvim='nvim $(fzf-tmux -p)'
 alias tls='tmux ls'
+alias fvim="rg --files --hidden | fzf --border-label='[ File search ]' --preview 'bat --style=numbers --color=always --line-range :100 {}' | xargs nvim "
+
 
 # Navigation
 alias dotfiles='cd ~/git/dotfiles'
+
+#Copy config
+alias cpconf='cp -r ~/.config/* ~/git/dotfiles'
 
 # Easy report
 alias cp='cp -iv'

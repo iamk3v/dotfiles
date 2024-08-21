@@ -8,6 +8,10 @@ alias fvim="rg --files --hidden | fzf --border-label='[ File search ]' --preview
 
 # Navigation
 alias dotfiles='cd ~/git/dotfiles'
+alias ..='cd ..'
+alias .3='cd ../..'
+alias .4='cd ../../..'
+alias .5='cd ../../../..'
 
 #Copy config
 alias cpconf='cp -r ~/.config/* ~/git/dotfiles'

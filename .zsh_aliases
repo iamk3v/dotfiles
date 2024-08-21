@@ -12,9 +12,10 @@ alias ..='cd ..'
 alias .3='cd ../..'
 alias .4='cd ../../..'
 alias .5='cd ../../../..'
+alias ~='cd'
 
 #Copy config
-alias cpconf='cp -r ~/.config/* ~/git/dotfiles'
+alias cpconf='cp -r ~/.tmux.conf ~/.zshrc ~/.zsh_aliases ~/.vimrc ~/git/dotfiles'
 
 # Easy report
 alias cp='cp -iv'
@@ -27,3 +28,4 @@ alias rmf='rm -rf'
 alias :q='exit'
 alias help='man'
 alias quit='exit'
+alias c='clear'

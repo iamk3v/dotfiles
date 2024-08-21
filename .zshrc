@@ -77,6 +77,7 @@ plugins=(
     zsh-syntax-highlighting
     fzf
     fzf-tab
+    fzf-brew
 )
 
 #Set up fzf key bindings and fuzzy completion

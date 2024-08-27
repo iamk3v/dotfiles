@@ -24,8 +24,12 @@ alias mkdir='mkdir -v'
 alias rm='rm -i'
 alias rmf='rm -rf'
 
+# Compile
+alias compile='() { gcc $1 -o compiled.out && ./compiled.out }'
+
 # Typos
 alias :q='exit'
 alias help='man'
 alias quit='exit'
 alias c='clear'
+alias home='cd'

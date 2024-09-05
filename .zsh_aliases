@@ -13,6 +13,19 @@ alias .3='cd ../..'
 alias .4='cd ../../..'
 alias .5='cd ../../../..'
 alias ~='cd'
+alias cdf=_cdf
+
+# Alias to cd into the directory of a selected file using fzf
+_cdf() {
+  local file
+  # Use fzf to select a file
+  file=$(fzf) # --query="$1" --preview 'bat --style=numbers --color=always --line-range=:500 {}' --preview-window=right:60%)
+  
+  # If a file is selected, extract the directory and cd into it
+  if [[ -n "$file" ]]; then
+    cd "$(dirname "$file")" || return
+  fi
+}
 
 #Copy config
 alias cpconf='cp -r ~/.tmux.conf ~/.zshrc ~/.zsh_aliases ~/.vimrc ~/git/dotfiles'

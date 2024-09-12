@@ -38,7 +38,11 @@ alias rm='rm -i'
 alias rmf='rm -rf'
 
 # Compile
-alias compile='() { gcc $1 -o compiled.out && ./compiled.out }'
+#alias compile='() { gcc "$1" -o "${1%.*}.out" && ./"${1%.*}.out"; }'
+alias compile=_compile
+_compile() {
+    gcc "$1" -o "${1%.*}.out" && ./"${1%.*}.out"
+}
 
 # Typos
 alias :q='exit'

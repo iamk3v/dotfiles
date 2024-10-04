@@ -45,7 +45,7 @@ _compile() {
 }
 
 # Homebrew
-alias brew-upgrade-all="brew upgrade --cask $(brew list --cask)"
+alias brew-upgrade-all="brew list --cask | xargs brew upgrade"
 
 # Typos
 alias :q='exit'

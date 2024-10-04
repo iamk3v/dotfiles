@@ -44,6 +44,9 @@ _compile() {
     gcc "$1" -o "${1%.*}.out" && ./"${1%.*}.out"
 }
 
+# Homebrew
+alias brew-upgrade-all="brew upgrade --cask $(brew list --cask)"
+
 # Typos
 alias :q='exit'
 alias help='man'

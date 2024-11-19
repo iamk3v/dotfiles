@@ -12,13 +12,14 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = [
+]
 
 # Start AeroSpace at login
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-enable-normalization-flatten-containers = true
+enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
@@ -53,12 +54,12 @@ on-focus-changed = "move-mouse window-lazy-center"
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        10
-outer.right =      10
+inner.horizontal = 5
+inner.vertical =   5
+outer.left =       5
+outer.bottom =     5
+outer.top =        5
+outer.right =      5
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -89,70 +90,70 @@ outer.right =      10
 # end tell'
 # '''
 
-ctrl-enter = '''exec-and-forget kitty -d ~ -e "tmux"'''
+alt-enter = '''exec-and-forget kitty -d ~ -e "tmux"'''
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-ctrl-slash = 'layout tiles horizontal vertical'
-ctrl-comma = 'layout accordion horizontal vertical'
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-ctrl-h = 'focus left'
-ctrl-j = 'focus down'
-ctrl-k = 'focus up'
-ctrl-l = 'focus right'
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
-ctrl-shift-h = 'move left'
-ctrl-shift-j = 'move down'
-ctrl-shift-k = 'move up'
-ctrl-shift-l = 'move right'
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-1 = 'workspace 1'
-ctrl-2 = 'workspace 2'
-ctrl-3 = 'workspace 3'
-ctrl-4 = 'workspace 4'
-ctrl-5 = 'workspace 5'
-ctrl-6 = 'workspace 6'
-ctrl-7 = 'workspace 7'
-ctrl-8 = 'workspace 8'
-ctrl-9 = 'workspace 9'
-ctrl-b = 'workspace B' # Browser
-ctrl-d = 'workspace D' # Discord
-ctrl-e = 'workspace E' # File explorer
-ctrl-m = 'workspace M' # Music
-ctrl-n = 'workspace N' # Notes
-ctrl-t = 'workspace T' # Terminal
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+#alt-7 = 'workspace 7'
+#alt-8 = 'workspace 8'
+#alt-9 = 'workspace 9'
+alt-b = 'workspace B' # Browser
+alt-d = 'workspace D' # Discord
+alt-e = 'workspace E' # File explorer
+alt-m = 'workspace M' # Music
+alt-n = 'workspace N' # Notes
+alt-t = 'workspace T' # Terminal
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-ctrl-shift-1 = 'move-node-to-workspace 1'
-ctrl-shift-2 = 'move-node-to-workspace 2'
-ctrl-shift-3 = 'move-node-to-workspace 3'
-ctrl-shift-4 = 'move-node-to-workspace 4'
-ctrl-shift-5 = 'move-node-to-workspace 5'
-ctrl-shift-6 = 'move-node-to-workspace 6'
-ctrl-shift-7 = 'move-node-to-workspace 7'
-ctrl-shift-8 = 'move-node-to-workspace 8'
-ctrl-shift-9 = 'move-node-to-workspace 9'
-ctrl-shift-b = 'move-node-to-workspace B' # Browser
-ctrl-shift-d = 'move-node-to-workspace D' # Discord
-ctrl-shift-e = 'move-node-to-workspace E' # File Explorer
-ctrl-shift-m = 'move-node-to-workspace M' # Music
-ctrl-shift-n = 'move-node-to-workspace N' # Notes
-ctrl-shift-t = 'move-node-to-workspace T' # Terminal
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+#alt-shift-7 = 'move-node-to-workspace 7'
+#alt-shift-8 = 'move-node-to-workspace 8'
+#alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-b = 'move-node-to-workspace B' # Browser
+alt-shift-d = 'move-node-to-workspace D' # Discord
+alt-shift-e = 'move-node-to-workspace E' # File Explorer
+alt-shift-m = 'move-node-to-workspace M' # Music
+alt-shift-n = 'move-node-to-workspace N' # Notes
+alt-shift-t = 'move-node-to-workspace T' # Terminal
 
-ctrl-shift-f = 'fullscreen'
+alt-shift-f = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-ctrl-tab = 'workspace-back-and-forth'
+alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-ctrl-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-shift-s = 'mode service'
+alt-shift-s = 'mode service'
 
-ctrl-shift-r = 'mode resize'
+alt-shift-r = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize width -50'
@@ -178,10 +179,14 @@ r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-ctrl-shift-h = ['join-with left', 'mode main']
-ctrl-shift-j = ['join-with down', 'mode main']
-ctrl-shift-k = ['join-with up', 'mode main']
-ctrl-shift-l = ['join-with right', 'mode main']
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+#[[on-window-detected]]
+#if.list-windows --workspace focused --count % 2 = 1
+#run = "join-with left"
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
@@ -196,7 +201,7 @@ if.app-id = 'com.apple.finder'
 run = "move-node-to-workspace E"
 
 [[on-window-detected]]
-if.app-id = 'com.spotfiy.client'
+if.app-id = 'com.spotify.client'
 run = "move-node-to-workspace M"
 
 [[on-window-detected]]

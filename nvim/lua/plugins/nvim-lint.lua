@@ -11,7 +11,6 @@ return {
 
     lint.linters_by_ft = {
       python = { "ruff", "mypy" },
-      ansible = { "ansible_lint" },
       yaml = { "yamllint" },
     }
 

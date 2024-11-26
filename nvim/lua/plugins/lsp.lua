@@ -44,7 +44,6 @@ return {
             "lua_ls",
             "pyright",
             "yamlls",
-            "bashls",
             "clangd",
             "ts_ls",
           },
@@ -68,7 +67,6 @@ return {
 
     require("lspconfig").clangd.setup({})
     require("lspconfig").ts_ls.setup({})
-    require("lspconfig").bashls.setup({})
     require("lspconfig").pyright.setup({
       filetypes = { "python" },
     })

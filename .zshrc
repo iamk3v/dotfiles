@@ -82,10 +82,23 @@ plugins=(
 )
 
 #Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND='fd -H --type f'
 #export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
 source <(fzf --zsh)
+
+eval "$(zoxide init --cmd cd zsh)"
+
+# GO
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+# Homebrew
+export GOROOT="$(brew --prefix golang)/libexec"
+# Manual install
+# export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -107,8 +120,14 @@ source <(fzf --zsh)
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# If kitty term, use Kitty's ssh
+if [ $TERM = "xterm-kitty" ]; then 
+  alias ssh="kitty +kitten ssh"; 
+fi
+
+source $ZSH/oh-my-zsh.sh
+
 if [ -f ~/.zsh_aliases ]; then
  	source ~/.zsh_aliases
 fi
 
-source $ZSH/oh-my-zsh.sh

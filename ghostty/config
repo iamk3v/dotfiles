@@ -1,17 +1,18 @@
-term = xterm-256color
 theme = catppuccin-mocha
 
 font-family = "Hack Nerd Font Mono"
 font-thicken = true
-font-size = 16
+font-size = 12
 
 macos-titlebar-style = hidden
 
 cursor-style = bar
 mouse-hide-while-typing = false
 
-background-opacity = 0.8
+background-opacity = 0.85
 background-blur-radius = 10
+
+term = xterm-ghostty
 
 keybind = global:cmd+s=toggle_quick_terminal
 quick-terminal-position = bottom

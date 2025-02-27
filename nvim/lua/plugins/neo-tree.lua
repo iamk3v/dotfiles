@@ -1,13 +1,24 @@
 return {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v3.x",
+  lazy = true,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "MunifTanjim/nui.nvim",
+  },
+  cmd = "Neotree",
+  keys = {
+    { mode = "n",
+      "<C-n>",
+      "<cmd>Neotree filesystem reveal left<CR>",
+      desc = "Reveal filesystem left",
     },
-    config = function()
-      vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>', {})
-      vim.keymap.set('n', '<C-b>', ':Neotree toggle<CR>', {})
-    end
-  }
+    {
+      mode = "n",
+      "<C-b>",
+      "<cmd>Neotree toggle<CR>",
+      desc = "Toggle filesystem left",
+    },
+  },
+}

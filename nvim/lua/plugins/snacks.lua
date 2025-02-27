@@ -1,5 +1,5 @@
 local logo =
-  [[                                                                      
+[[                                                                      
                                                                       
         ████ ██████           █████      ██                     
        ███████████             █████                             
@@ -8,7 +8,7 @@ local logo =
      █████████ ██████████ █████████ █████ █████ ████ █████   
    ███████████ ███    ███ █████████ █████ █████ ████ █████  
   ██████  █████████████████████ ████ █████ █████ ████ ██████ 
-                                                                        
+
   ]]
 return {
   "folke/snacks.nvim",
@@ -28,19 +28,20 @@ return {
         { section = "startup" },
       },
     },
-      notifier = {
-        enabled = true,
-        timeout = 3000,
-      },
-      quickfile = { enabled = true },
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
-      styles = {
-        notification = {
-          wo = { wrap = true } -- Wrap notifications
-        }
-      }
+    notifier = {
+      enabled = true,
+      timeout = 3000,
     },
+    input = { enabled = true },
+    quickfile = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    styles = {
+      notification = {
+        wo = { wrap = true } -- Wrap notifications
+      }
+    }
+  },
   keys = {
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
@@ -50,8 +51,8 @@ return {
     { "<leader>gf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
     { "<leader>gl", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
     { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-    { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
-    { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
+--  { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+--  { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {

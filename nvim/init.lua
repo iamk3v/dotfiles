@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("vim-options")
 require("keybinds")
 require("lazy").setup("plugins")
+require("utils.floaterminal").setup()
 
 -- Sets colors for cursorLine, all other lines and visual highlight
 vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='#FFFFFF', bg='NONE',  bold=true })

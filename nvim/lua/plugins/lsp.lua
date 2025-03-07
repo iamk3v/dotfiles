@@ -2,14 +2,14 @@ return {
   "VonHeikemen/lsp-zero.nvim",
 
   dependencies = {
-    { "neovim/nvim-lspconfig" }, -- Required
+    { "neovim/nvim-lspconfig" },
     { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" }, -- Optional
+    { "williamboman/mason-lspconfig.nvim" },
     { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     -- Autocompletion
-    { "hrsh7th/nvim-cmp" }, -- Required
-    { "hrsh7th/cmp-nvim-lsp" }, -- Required
-    { "L3MON4D3/LuaSnip" }, -- Required
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "L3MON4D3/LuaSnip" },
   },
 
   config = function()
@@ -20,6 +20,8 @@ return {
     local mason_tool_installer = require("mason-tool-installer")
     local mason_lspconfig = require("mason-lspconfig")
     local lspconfig = require("lspconfig")
+    local cmp = require('cmp')
+
 
     lsp.on_attach(function(client, bufnr)
       local opts = {buffer = bufnr, remap = false}
@@ -32,6 +34,26 @@ return {
       vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
       vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     end)
+
+    local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+    cmp.setup({
+      sources = {
+        {name = 'nvim_lsp'},
+      },
+      snippet = {
+        expand = function(args)
+          -- You need Neovim v0.10 to use vim.snippet
+          vim.snippet.expand(args.body)
+        end,
+      },
+      mapping = cmp.mapping.preset.insert({
+        ['C-p›'] = cmp.mapping.select_prev_item(cmp_select),
+        ['C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["C-Space>"] = cmp.mapping.complete(),
+      }),
+    })
 
     lsp.omnifunc.setup({
       tabcomplete = true,

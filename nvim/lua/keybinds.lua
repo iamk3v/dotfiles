@@ -17,8 +17,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])        -- Copy to global clipboard
 
 vim.keymap.set("n", "H", "^") -- Move to start of line
 vim.keymap.set("n", "L", "$") -- Move to end of line
---vim.keymap.set("n", "J", "6j") -- Move 6 down
---vim.keymap.set("n", "K", "6k") -- Move 6 up
+-- vim.keymap.set("n", "J", "6j") -- Move 6 down
+-- vim.keymap.set("n", "K", "6k") -- Move 6 up
 
 vim.keymap.set("n", "<leader>i", "ciw") -- Replace cursor word
 vim.keymap.set("n", "<leader>a", "caw") -- Replace cursor word

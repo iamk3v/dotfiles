@@ -21,7 +21,7 @@ return {
       vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
 
       require("telescope").load_extension("ui-select")
-      require "lua.telescope.multigrep".setup()
+      require("telescope.multigrep").setup()
     end,
   },
 }

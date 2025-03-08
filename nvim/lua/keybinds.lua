@@ -10,6 +10,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Keep cursor on the center of the scre
 vim.keymap.set("n", "n", "nzzzv")       -- Keep cursor on the center of the screen when going to next word in search
 vim.keymap.set("n", "N", "Nzzzv")       -- Keep cursor on the center of the screen when going to previous word in search
 
+-- Stay in indent mode
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
+
 vim.keymap.set("x", "<leader>p", "\"_dP") -- When copying foo and pasting over bar, keep foo in buffer instead of bar
 
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]]) -- Copy to global clipboard

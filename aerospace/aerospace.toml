@@ -192,6 +192,10 @@ if.app-id = 'com.brave.Browser'
 run = "move-node-to-workspace B"
 
 [[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = "move-node-to-workspace B"
+
+[[on-window-detected]]
 if.app-id = 'com.brave.Browser.app.nhpllflghmojjchbjjhnbepafgaahamo'
 run = "move-node-to-workspace D"
 

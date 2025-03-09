@@ -5,7 +5,7 @@ alias pwsh='/usr/local/microsoft/powershell/7/pwsh'
 alias tls='tmux ls'
 alias fvim="rg --files --hidden | fzf --border-label='[ File search ]' --preview 'bat --style=numbers --color=always --line-range :100 {}' | xargs nvim "
 alias ls="eza --long --color=always --icons=always --no-user"
-alias test="eza --long --color=always --icons=always --no-user"
+
 # Navigation
 alias dotfiles='cd ~/git/dotfiles'
 alias ..='cd ..'
@@ -29,6 +29,7 @@ _cdf() {
 
 # Copy config
 alias cpconf='cp -r  ~/.config/aerospace ~/.config/fastfetch ~/.config/ghostty ~/.config/kitty ~/.config/neofetch ~/.config/nvim ~/.config/yazi ~/.tmux.conf ~/.zshrc ~/.zsh_aliases ~/.vimrc ~/git/dotfiles'
+
 
 # Easy report
 alias cp='cp -iv'

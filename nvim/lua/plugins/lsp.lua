@@ -6,6 +6,7 @@ return {
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    { "stevearc/conform.nvim" },
   },
 
   config = function()
@@ -72,6 +73,10 @@ return {
         end
       })
     end
+
+    -- Autoformatting
+    require("utils.autoformat").setup()
+
 
   end
 }

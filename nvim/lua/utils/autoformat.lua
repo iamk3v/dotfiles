@@ -16,6 +16,7 @@ local setup = function()
 			sql = { "sqlformat" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
+			latex = { "latexindent" },
 		},
 	})
 

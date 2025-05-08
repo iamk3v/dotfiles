@@ -13,6 +13,9 @@ vim.opt.expandtab = true
 vim.opt.list = true
 vim.opt.smartindent = true
 vim.opt.cmdheight = 0
+vim.opt.relativenumber = true
+vim.opt.number = true
+
 
 vim.opt.listchars = {
   tab = "│ ",

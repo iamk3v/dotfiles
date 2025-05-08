@@ -38,3 +38,6 @@ vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<CR>")
 vim.keymap.set("n", "<leader>le", "<cmd>VimtexErrors<CR>")
 vim.keymap.set("n", "<leader>lt", "<cmd>VimtexTocToggle<CR>")
 vim.keymap.set("n", "<leader>li", "<cmd>VimtexInfo<CR>")
+
+-- Oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

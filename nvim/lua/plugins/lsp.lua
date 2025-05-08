@@ -3,8 +3,8 @@ return {
 
 	dependencies = {
 		{ "neovim/nvim-lspconfig" },
-		{ "williamboman/mason.nvim" },
-		{ "williamboman/mason-lspconfig.nvim" },
+		{ "mason-org/mason.nvim", version = "^1.0.0" }, -- explicit v1 lock
+		{ "mason-org/mason-lspconfig.nvim", version = "^1.0.0" }, -- same here
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 		{ "stevearc/conform.nvim" },
 	},
@@ -45,12 +45,6 @@ return {
 			end, opts)
 		end)
 
-		--   lsp.omnifunc.setup({
-		--     tabcomplete = true,
-		--     use_fallback = true,
-		--     update_on_delete = true,
-		--   })
-
 		-- List of LSP servers
 		local lsps = {
 			"lua_ls",
@@ -70,7 +64,6 @@ return {
 			ensure_installed = lsps,
 			automatic_installation = true,
 		})
-
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"yamllint",
@@ -79,15 +72,12 @@ return {
 				"prettier",
 			},
 		})
-
-		-- Auto-install and configure LSPs
-		for _, server_name in ipairs(lsps) do
-			mason_lspconfig.setup_handlers({
-				function()
-					lspconfig[server_name].setup({})
-				end,
-			})
-		end
+		-- Setup handlers for all servers
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				lspconfig[server_name].setup({})
+			end,
+		})
 
 		-- Autoformatting
 		require("utils.autoformat").setup()

@@ -1,3 +1,6 @@
+# LSP
+Mason LSP servers require npm (node.js) and java (openjdk) installed
+
 # Vimtex
 
 ## Mactex

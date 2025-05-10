@@ -11,6 +11,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local lspconfig = require("lspconfig")
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			-- Setup mason and related tools
 			require("mason").setup()
@@ -22,7 +23,6 @@ return {
 				"clangd",
 				"gopls",
 				"ts_ls",
-				"rust_analyzer",
 				"jsonls",
 				"html",
 				"cssls",
@@ -36,11 +36,18 @@ return {
 
 			require("mason-tool-installer").setup({
 				ensure_installed = {
-					"yamllint",
-					"mypy",
-					"eslint_d",
-					"prettier",
+					"luacheck", -- Lua
+					"ruff", -- Python
+					"mypy", -- Python
+					"yamllint", -- YAML
+					"cpplint", -- C/C++
+					"golangci-lint", -- Go
+					"eslint_d", -- JS/TS
+					"jsonlint", -- JSON
+					"htmlhint", -- HTML
+					"stylelint", -- CSS
 				},
+				automatic_installation = true,
 			})
 
 			-- Shared on_attach function
@@ -61,6 +68,7 @@ return {
 			for _, server in ipairs(servers) do
 				lspconfig[server].setup({
 					on_attach = on_attach,
+					capabilities = capabilities,
 				})
 			end
 

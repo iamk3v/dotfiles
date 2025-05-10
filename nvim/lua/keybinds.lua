@@ -29,15 +29,3 @@ vim.keymap.set("n", "<leader>a", "caw") -- Replace cursor word
 vim.keymap.set("n", "<leader>d", "daw") -- Delete cursor word
 
 -- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>") -- Exit terminal mode back to normal mode
-
--- VimTex
-vim.keymap.set("n", "<leader>ll", "<cmd>VimtexCompile<CR>")
-vim.keymap.set("n", "<leader>lk", "<cmd>VimtexStop<CR>")
-vim.keymap.set("n", "<leader>lc", "<cmd>VimtexClean<CR>")
-vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<CR>")
-vim.keymap.set("n", "<leader>le", "<cmd>VimtexErrors<CR>")
-vim.keymap.set("n", "<leader>lt", "<cmd>VimtexTocToggle<CR>")
-vim.keymap.set("n", "<leader>li", "<cmd>VimtexInfo<CR>")
-
--- Oil
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

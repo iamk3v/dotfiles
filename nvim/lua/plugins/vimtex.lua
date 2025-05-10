@@ -16,5 +16,13 @@ return {
   filetype plugin indent on
   syntax enable
 ]])
+
+		vim.keymap.set("n", "<leader>ll", "<cmd>VimtexCompile<CR>")
+		vim.keymap.set("n", "<leader>lk", "<cmd>VimtexStop<CR>")
+		vim.keymap.set("n", "<leader>lc", "<cmd>VimtexClean<CR>")
+		vim.keymap.set("n", "<leader>lv", "<cmd>VimtexView<CR>")
+		vim.keymap.set("n", "<leader>le", "<cmd>VimtexErrors<CR>")
+		vim.keymap.set("n", "<leader>lt", "<cmd>VimtexTocToggle<CR>")
+		vim.keymap.set("n", "<leader>li", "<cmd>VimtexInfo<CR>")
 	end,
 }

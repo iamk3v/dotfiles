@@ -16,10 +16,10 @@ return {
 				},
 			})
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>fd", builtin.find_files, {})
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
-			vim.keymap.set("n", "<space>fh", require("telescope.builtin").help_tags)
+			vim.keymap.set("n", "<leader>fd", builtin.find_files, { desc = "Find Files" })
+			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
+			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, { desc = "Recent Files" })
+			vim.keymap.set("n", "<space>fh", require("telescope.builtin").help_tags, { desc = "Help Tags" })
 
 			require("telescope").load_extension("ui-select")
 			require("telescope.multigrep").setup()

@@ -1,7 +1,7 @@
 return {
 	{
 		"supermaven-inc/supermaven-nvim",
-		lazy = true,
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("supermaven-nvim").setup({})
 		end,

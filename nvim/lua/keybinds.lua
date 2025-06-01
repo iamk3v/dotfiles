@@ -29,3 +29,13 @@ vim.keymap.set("n", "<leader>a", "caw") -- Replace cursor word
 vim.keymap.set("n", "<leader>d", "daw") -- Delete cursor word
 
 -- vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>") -- Exit terminal mode back to normal mode
+
+-- Toggle autoformat on save
+vim.keymap.set("n", "<leader>tf", function()
+	vim.g.disable_autoformat = not vim.g.disable_autoformat
+	if vim.g.disable_autoformat then
+		vim.notify("Autoformatting disabled", vim.log.levels.INFO)
+	else
+		vim.notify("Autoformatting enabled", vim.log.levels.INFO)
+	end
+end, { desc = "Toggle autoformat on save" })

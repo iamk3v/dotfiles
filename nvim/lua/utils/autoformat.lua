@@ -27,6 +27,11 @@ local setup = function()
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		group = vim.api.nvim_create_augroup("custom-conform", { clear = true }),
 		callback = function(args)
+			-- Skip formatting if the toggle is set
+			if vim.g.disable_autoformat then
+				return
+			end
+
 			require("conform").format({
 				bufnr = args.buf,
 				lsp_fallback = true,

@@ -3,7 +3,7 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_enable = false } },
 			{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 			{ "stevearc/conform.nvim" },
 		},
@@ -34,22 +34,6 @@ return {
 				automatic_installation = true,
 			})
 
-			require("mason-tool-installer").setup({
-				ensure_installed = {
-					"luacheck", -- Lua
-					"ruff", -- Python
-					"mypy", -- Python
-					"yamllint", -- YAML
-					"cpplint", -- C/C++
-					"golangci-lint", -- Go
-					"eslint_d", -- JS/TS
-					"jsonlint", -- JSON
-					"htmlhint", -- HTML
-					"stylelint", -- CSS
-				},
-				automatic_installation = true,
-			})
-
 			-- Shared on_attach function
 			local on_attach = function(client, bufnr)
 				local opts = { buffer = bufnr, remap = false }
@@ -71,6 +55,22 @@ return {
 					capabilities = capabilities,
 				})
 			end
+
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"luacheck", -- Lua
+					"ruff", -- Python
+					"mypy", -- Python
+					"yamllint", -- YAML
+					"cpplint", -- C/C++
+					"golangci-lint", -- Go
+					"eslint_d", -- JS/TS
+					"jsonlint", -- JSON
+					"htmlhint", -- HTML
+					"stylelint", -- CSS
+				},
+				automatic_installation = true,
+			})
 
 			-- Autoformatting (your own module)
 			require("utils.autoformat").setup()

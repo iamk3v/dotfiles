@@ -36,17 +36,34 @@ return {
 
 			-- Shared on_attach function
 			local on_attach = function(client, bufnr)
-				local opts = { buffer = bufnr, remap = false }
+	      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, remap = false, desc = "Go to definition" })
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Hover" })
+        vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { buffer = bufnr, remap = false, desc = "Workspace symbol" })
+        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr, remap = false, desc = "Open diagnostics" })
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = "Code action" })
+        vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, { buffer = bufnr, remap = false, desc = "References" })
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
+        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = "Signature help" })
 
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
-				vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-				vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-			end
+        -- Autocommand to open diagnostics on cursor hold
+        vim.api.nvim_create_autocmd("CursorHold", {
+          buffer = bufnr,
+          callback = function()
+            local diagnostics = vim.diagnostic.get(bufnr, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+            if #diagnostics > 0 then
+              vim.diagnostic.open_float(nil, {
+                scope = "line",
+                border = "rounded",
+                focusable = false,
+                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+              })
+            end
+          end,
+    })
+
+    -- Ensure CursorHold event is triggered (optional, if updatetime is high)
+    vim.opt.updatetime = 250 -- Adjust if needed (in milliseconds)
+      end
 
 			-- Manually set up each server
 			for _, server in ipairs(servers) do

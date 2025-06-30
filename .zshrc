@@ -81,6 +81,9 @@ plugins=(
     fzf-brew
 )
 
+# Set default editor
+export EDITOR=nvim
+
 #Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND='fd -H --type f'

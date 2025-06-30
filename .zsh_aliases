@@ -47,7 +47,7 @@ _compile() {
 }
 
 # Homebrew
-alias brew-upgrade-all="brew list --cask | xargs brew upgrade && brew cleanup"
+alias brew-upgrade-all='brew list --cask | xargs -I {} brew upgrade --cask "{}" && brew cleanup'
 
 # Typos
 alias :q='exit'
@@ -59,3 +59,6 @@ alias cat='bat'
 
 # Kitty
 alias icat="kitten icat"
+
+# XAMMP
+alias xammp-sql="/Applications/XAMPP/xamppfiles/bin/mysql"

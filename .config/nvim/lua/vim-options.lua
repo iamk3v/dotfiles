@@ -4,7 +4,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.number = true
 vim.g.mapleader = " "
-vim.opt.cursorline = true  -- Enable highlighting of the current line
+vim.opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.swapfile = false
 vim.opt.scrolloff = 10
 vim.opt.ignorecase = true
@@ -16,11 +16,10 @@ vim.opt.cmdheight = 0
 vim.opt.relativenumber = true
 vim.opt.number = true
 
-
 vim.opt.listchars = {
-  tab = "│ ",
-  trail = "·",
-  extends = "»",
-  precedes = "«",
-  leadmultispace = "│" .. string.rep(" ", vim.opt.shiftwidth:get() - 1),
+	tab = "│ ",
+	trail = "·",
+	extends = "»",
+	precedes = "«",
+	leadmultispace = "│" .. string.rep(" ", vim.opt.shiftwidth:get() - 1),
 }

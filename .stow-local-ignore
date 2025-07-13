@@ -1,5 +1,6 @@
 .git
 .gitconfig
+.gitignore
 .DS_Store
 .config/neofetch
 .config/kitty

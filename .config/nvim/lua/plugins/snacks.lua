@@ -121,7 +121,6 @@ return {
     { "<leader>cr",      function() Snacks.rename.rename_file() end,                             desc = "Rename File" },
     -- Terminal
     { "<leader>_",       function() Snacks.terminal() end,                                       desc = "Toggle Terminal" },
-    { "<c-_>",           function() Snacks.terminal() end,                                       desc = "which_key_ignore" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {

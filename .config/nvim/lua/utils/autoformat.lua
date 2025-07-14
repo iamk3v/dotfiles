@@ -3,20 +3,23 @@ local setup = function()
 	conform.setup({
 		formatters_by_ft = {
 			lua = { "stylua" },
-			yaml = { "yamlls" },
+			yaml = { "prettier" },
 			go = { "gofmt" },
-			javascript = { "biome-check" },
-			typescript = { "biome-check" },
-			json = { "biome-check" },
-			html = { "biome-check" },
-			css = { "biome-check" },
-			scss = { "biome-check" },
-			sh = { "shfmt" },
-			python = { "black" },
-			sql = { "sqlformat" },
+			javascript = { "biome" },
+			typescript = { "biome" },
+			json = { "biome" },
+			html = { "biome" },
+			css = { "biome" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			latex = { "latexindent" },
+		},
+		formatters = {
+			["clang-format"] = {
+				args = {
+					"--style={BasedOnStyle: Google, IndentAccessModifiers: true, AccessModifierOffset: 2}",
+				},
+			},
 		},
 	})
 

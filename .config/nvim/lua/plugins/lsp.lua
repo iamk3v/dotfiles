@@ -80,8 +80,9 @@ return {
 					"mypy", -- Python
 					"yamllint", -- YAML
 					"cpplint", -- C/C++
+          "clang-format", -- C/C++
 					"golangci-lint", -- Go
-					"eslint_d", -- JS/TS
+          "biome", -- JS/TS/HTML/JSON
 					"jsonlint", -- JSON
 					"htmlhint", -- HTML
 					"stylelint", -- CSS
@@ -89,7 +90,7 @@ return {
 				automatic_installation = true,
 			})
 
-			-- Autoformatting (your own module)
+			-- Autoformatting 
 			require("utils.autoformat").setup()
 		end,
 	},

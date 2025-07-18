@@ -13,6 +13,7 @@ local setup = function()
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			latex = { "latexindent" },
+			python = { "black" },
 		},
 		formatters = {
 			["clang-format"] = {

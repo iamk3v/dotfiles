@@ -1,5 +1,4 @@
-local logo =
-[[                                                                      
+local logo = [[                                                                      
                                                                       
         ████ ██████           █████      ██                     
        ███████████             █████                             
@@ -146,6 +145,13 @@ return {
           :map("<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.inlay_hints():map("<leader>uh")
+
+        vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = "#61afef", bold = true }) -- Blue header
+        vim.api.nvim_set_hl(0, "SnacksDashboardKey", { fg = "#e5c07b" }) -- Yellow keys
+        vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { fg = "#98c379" }) -- Green icons
+        vim.api.nvim_set_hl(0, "SnacksDashboardFooter", { fg = "#61afef" }) -- Purple footer
+        vim.api.nvim_set_hl(0, "SnacksDashboardSpecial", { fg = "#98c379" }) -- Green special elements
+        vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { fg = "#abb2bf" }) -- Light gray descriptions
       end,
     })
   end,

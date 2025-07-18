@@ -5,12 +5,12 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			--	python = { "ruff", "mypy" },
-			--	yaml = { "yamllint" },
-			--	lua = { "luacheck" },
-			--	go = { "golangcilint" },
-			--	c = { "cpplint" },
-			--	cpp = { "cpplint" },
+			python = { "ruff", "mypy" },
+			yaml = { "yamllint" },
+			lua = { "luacheck" },
+			--  go = { "golangcilint" },
+			c = { "cpplint" },
+			cpp = { "cpplint" },
 			--	javascript = { "biome" },
 			--	typescript = { "biome" },
 			--	javascriptreact = { "biome" },

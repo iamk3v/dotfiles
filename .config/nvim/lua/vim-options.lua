@@ -16,6 +16,7 @@ vim.opt.cmdheight = 0
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.winborder = "rounded"
+-- vim.opt.colorcolumn = "80"
 
 vim.opt.listchars = {
 	tab = "│ ",

@@ -61,8 +61,8 @@ return {
           end,
     })
 
-    -- Ensure CursorHold event is triggered (optional, if updatetime is high)
-    vim.opt.updatetime = 250 -- Adjust if needed (in milliseconds)
+    -- Ensure CursorHold event is triggered 
+    vim.opt.updatetime = 25
       end
 
 			-- Manually set up each server
@@ -75,17 +75,19 @@ return {
 
 			require("mason-tool-installer").setup({
 				ensure_installed = {
-					"luacheck", -- Lua
-					"ruff", -- Python
-					"mypy", -- Python
-					"yamllint", -- YAML
-					"cpplint", -- C/C++
-          "clang-format", -- C/C++
-					"golangci-lint", -- Go
-          "biome", -- JS/TS/HTML/JSON
-					"jsonlint", -- JSON
-					"htmlhint", -- HTML
-					"stylelint", -- CSS
+					"luacheck", -- Lua LINT
+					"ruff", -- Python LINT
+					"mypy", -- Python LINT
+					"yamllint", -- YAML LINT 
+					"cpplint", -- C/C++ LINT 
+          "clang-format", -- C/C++ FORMAT
+					"golangci-lint", -- Go LINT
+          "biome", -- JS/TS/HTML/JSON LINT/FORMAT
+					"jsonlint", -- JSON LINT
+					"stylelint", -- CSS LINT
+          "prettier", -- YAML FORMAT
+          "gofmt", -- GO FORMAT
+          "black", -- PYTHON FORMAT
 				},
 				automatic_installation = true,
 			})

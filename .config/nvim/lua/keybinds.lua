@@ -3,11 +3,12 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down in visual
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up in visual" })
 vim.keymap.set("n", "<leader>w", "<C-w>", { desc = "Select next window" })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Search and replace cursor word" })
+vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Search and replace cursor word" })
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move half page down" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move half page up" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "Move to next search result" }) -- Keep cursor on the center of the screen when going to next word in search
+vim.keymap.set("n", "n", "nzzzv", { desc = "Move to next search result" })     -- Keep cursor on the center of the screen when going to next word in search
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Move to previous search result" }) -- Keep cursor on the center of the screen when going to previous word in search
 
 -- Stay in indent mode
@@ -32,10 +33,16 @@ vim.keymap.set("n", "<leader>d", "daw", { desc = "Delete current word" })
 
 -- Toggle autoformat on save
 vim.keymap.set("n", "<leader>tf", function()
-	vim.g.disable_autoformat = not vim.g.disable_autoformat
-	if vim.g.disable_autoformat then
-		vim.notify("Autoformatting disabled", vim.log.levels.INFO)
-	else
-		vim.notify("Autoformatting enabled", vim.log.levels.INFO)
-	end
+  vim.g.disable_autoformat = not vim.g.disable_autoformat
+  if vim.g.disable_autoformat then
+    vim.notify("Autoformatting disabled", vim.log.levels.INFO)
+  else
+    vim.notify("Autoformatting enabled", vim.log.levels.INFO)
+  end
 end, { desc = "Toggle autoformat on save" })
+
+-- Trigger formatting
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'Format buffer with LSP' })
+
+-- signature help
+vim.keymap.set('n', '<leader>sh', vim.lsp.buf.signature_help, { desc = 'Signature help' })

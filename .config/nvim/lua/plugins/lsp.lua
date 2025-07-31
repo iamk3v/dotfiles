@@ -1,49 +1,52 @@
 return {
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim", opts = { automatic_enable = false } },
-			{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
-			{ "stevearc/conform.nvim" },
-		},
-		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local lspconfig = require("lspconfig")
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim",        opts = { automatic_enable = false } },
+      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    },
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lspconfig = require("lspconfig")
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			-- Setup mason and related tools
-			require("mason").setup()
+      -- Setup mason and related tools
+      require("mason").setup()
 
-			local servers = {
-				"lua_ls",
-				"pyright",
-				"yamlls",
-				"clangd",
-				"gopls",
-				"ts_ls",
-				"jsonls",
-				"html",
-				"cssls",
-				"texlab",
-			}
+      local servers = {
+        "lua_ls",
+        "pyright",
+        "yamlls",
+        "clangd",
+        "gopls",
+        "ts_ls",
+        "jsonls",
+        "html",
+        "cssls",
+        "texlab",
+      }
 
-			require("mason-lspconfig").setup({
-				ensure_installed = servers,
-				automatic_installation = true,
-			})
+      require("mason-lspconfig").setup({
+        ensure_installed = servers,
+        automatic_installation = true,
+      })
 
-			-- Shared on_attach function
-			local on_attach = function(client, bufnr)
-	      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, remap = false, desc = "Go to definition" })
+      -- Shared on_attach function
+      local on_attach = function(client, bufnr)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, remap = false, desc = "Go to definition" })
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Hover" })
-        vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { buffer = bufnr, remap = false, desc = "Workspace symbol" })
-        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { buffer = bufnr, remap = false, desc = "Open diagnostics" })
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = "Code action" })
+        vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol,
+          { buffer = bufnr, remap = false, desc = "Workspace symbol" })
+        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float,
+          { buffer = bufnr, remap = false, desc = "Open diagnostics" })
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,
+          { buffer = bufnr, remap = false, desc = "Code action" })
         vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, { buffer = bufnr, remap = false, desc = "References" })
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
-        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = "Signature help" })
+        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help,
+          { buffer = bufnr, remap = false, desc = "Signature help" })
 
         -- Autocommand to open diagnostics on cursor hold
         vim.api.nvim_create_autocmd("CursorHold", {
@@ -59,41 +62,30 @@ return {
               })
             end
           end,
-    })
+        })
 
-    -- Ensure CursorHold event is triggered 
-    vim.opt.updatetime = 25
+        -- Ensure CursorHold event is triggered
+        vim.opt.updatetime = 25
       end
 
-			-- Manually set up each server
-			for _, server in ipairs(servers) do
-				lspconfig[server].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			end
+      -- Manually set up each server
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+      end
 
-			require("mason-tool-installer").setup({
-				ensure_installed = {
-					"luacheck", -- Lua LINT
-					"ruff", -- Python LINT
-					"mypy", -- Python LINT
-					"yamllint", -- YAML LINT 
-					"cpplint", -- C/C++ LINT 
-          "clang-format", -- C/C++ FORMAT
-					"golangci-lint", -- Go LINT
-          "biome", -- JS/TS/HTML/JSON LINT/FORMAT
-					"jsonlint", -- JSON LINT
-					"stylelint", -- CSS LINT
-          "prettier", -- YAML FORMAT
-          "gofmt", -- GO FORMAT
-          "black", -- PYTHON FORMAT
-				},
-				automatic_installation = true,
-			})
-
-			-- Autoformatting 
-			require("utils.autoformat").setup()
-		end,
-	},
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        callback = function()
+          -- Skip formatting if the toggle is set
+          if vim.g.disable_autoformat then
+            return
+          end
+          -- Call formatting
+          vim.lsp.buf.format({ async = false })
+        end,
+      })
+    end,
+  },
 }

@@ -84,6 +84,8 @@ cask "alt-tab"
 cask "appcleaner"
 # Secure and open source password manager
 cask "bitwarden"
+# Persistence monitoring 
+cask "blockblock"
 # Privacy-focused web browser
 cask "brave-browser"
 # 2FA client
@@ -112,6 +114,10 @@ cask "jordanbaird-ice"
 cask "keka"
 # Fast GPU-accelerated terminal
 cask "kitty"
+# Persistance checker
+cask "knockknock"
+# Network connection monitor
+cask "lulu"
 # LaTeX distribution for macOS without GUI
 cask "mactex-no-gui"
 # Markdown editor

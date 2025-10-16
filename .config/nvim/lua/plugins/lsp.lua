@@ -9,11 +9,11 @@ return {
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      local lspconfig = require("lspconfig")
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-      -- Setup mason and related tools
+      -- Mason setup
       require("mason").setup()
+      local mason_lsp = require("mason-lspconfig")
 
       local servers = {
         "lua_ls",
@@ -28,32 +28,32 @@ return {
         "texlab",
       }
 
-      require("mason-lspconfig").setup({
+      mason_lsp.setup({
         ensure_installed = servers,
         automatic_installation = true,
       })
 
-      -- Shared on_attach function
+      -- Common on_attach for all servers
       local on_attach = function(client, bufnr)
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, remap = false, desc = "Go to definition" })
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = "Hover" })
-        vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol,
-          { buffer = bufnr, remap = false, desc = "Workspace symbol" })
-        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float,
-          { buffer = bufnr, remap = false, desc = "Open diagnostics" })
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,
-          { buffer = bufnr, remap = false, desc = "Code action" })
-        vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, { buffer = bufnr, remap = false, desc = "References" })
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = "Rename" })
-        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help,
-          { buffer = bufnr, remap = false, desc = "Signature help" })
+        local map = function(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, remap = false, desc = desc })
+        end
 
-        -- Autocommand to open diagnostics on cursor hold
+        map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+        map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+        map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, "Workspace symbol")
+        map("n", "<leader>vd", vim.diagnostic.open_float, "Show diagnostics")
+        map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
+        map("n", "<leader>rr", vim.lsp.buf.references, "Find references")
+        map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+        map("i", "<C-h>", vim.lsp.buf.signature_help, "Signature help")
+
+        -- Diagnostics on hover (non-intrusive)
         vim.api.nvim_create_autocmd("CursorHold", {
           buffer = bufnr,
           callback = function()
-            local diagnostics = vim.diagnostic.get(bufnr, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
-            if #diagnostics > 0 then
+            local diags = vim.diagnostic.get(bufnr, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+            if #diags > 0 then
               vim.diagnostic.open_float(nil, {
                 scope = "line",
                 border = "rounded",
@@ -64,26 +64,39 @@ return {
           end,
         })
 
-        -- Ensure CursorHold event is triggered
         vim.opt.updatetime = 25
       end
 
-      -- Manually set up each server
+      -- Configure each LSP server natively
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-          on_attach = on_attach,
+        vim.lsp.config[server] = {
           capabilities = capabilities,
-        })
+          on_attach = on_attach,
+          settings = (server == "lua_ls") and {
+            Lua = {
+              workspace = {
+                library = {
+                  [vim.env.VIMRUNTIME] = true,
+                  [vim.fn.stdpath("config") .. "/lua"] = true,
+                },
+              },
+              diagnostics = {
+                globals = { "vim" },
+              },
+            },
+          } or nil,
+        }
+
+        -- Explicitly enable the server
+        vim.lsp.enable(server)
       end
 
+      -- Format on save (unless disabled)
       vim.api.nvim_create_autocmd("BufWritePre", {
         callback = function()
-          -- Skip formatting if the toggle is set
-          if vim.g.disable_autoformat then
-            return
+          if not vim.g.disable_autoformat then
+            vim.lsp.buf.format({ async = false })
           end
-          -- Call formatting
-          vim.lsp.buf.format({ async = false })
         end,
       })
     end,

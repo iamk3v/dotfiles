@@ -19,11 +19,11 @@ vim.opt.winborder = "rounded"
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.listchars = {
-	tab = "│ ",
-	trail = "·",
-	extends = "»",
-	precedes = "«",
-	leadmultispace = "│" .. string.rep(" ", vim.opt.shiftwidth:get() - 1),
+  tab = "│ ",
+  trail = "·",
+  extends = "»",
+  precedes = "«",
+  leadmultispace = "│" .. string.rep(" ", vim.opt.shiftwidth:get() - 1),
 }
 
 -- Sets colors for cursorLine, all other lines and visual highlight
@@ -34,6 +34,6 @@ vim.api.nvim_set_hl(0, "Visual", { bg = "#515051", fg = "NONE" })
 
 -- Auto reload aerospace on save
 vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = { "aerospace.toml" },
-	command = "!aerospace reload-config",
+  pattern = { "aerospace.toml" },
+  command = "!aerospace reload-config",
 })

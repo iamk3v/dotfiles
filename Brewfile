@@ -136,6 +136,8 @@ cask "shottr"
 cask "skim"
 # Music player
 cask "spotify"
+# Dark web browser
+cask "tor-browser"
 # Virtual machine and emulator for macOS
 cask "utm"
 # Whisky: graphical wrapper for Wine (for running Windows apps)

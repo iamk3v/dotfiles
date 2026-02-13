@@ -16,7 +16,7 @@ vim.opt.cmdheight = 0
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.winborder = "rounded"
--- vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 
 vim.opt.listchars = {
   tab = "│ ",
@@ -31,6 +31,7 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FFFFFF", bg = "NONE", bold = tru
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" }) -- Remove background from the entire line
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#DEAFAE", bold = false })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#515051", fg = "NONE" })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#515051" })
 
 -- Auto reload aerospace on save
 vim.api.nvim_create_autocmd("BufWritePost", {

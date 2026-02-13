@@ -9,6 +9,28 @@ local logo = [[
   ██████  █████████████████████ ████ █████ █████ ████ ██████ 
 
   ]]
+
+-- Gets the number of unstaged changes in the current git repository
+local function get_unstaged_changes()
+  if not Snacks.git.get_root() then
+    return
+  end
+  local result = vim.fn.system 'git status --porcelain'
+  if vim.v.shell_error ~= 0 or result:match '^%s*$' then
+    return
+  end
+  return {
+    icon = '',
+    title = 'Unstaged Changes',
+    section = 'terminal',
+    cmd = "git --no-pager diff --stat",
+    height = 5,
+    indent = 2,
+    padding = 2,
+    ttl = 0,
+  }
+end
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -29,6 +51,7 @@ return {
       },
       sections = {
         { section = "header" },
+        get_unstaged_changes,
         { section = "keys",   gap = 1, padding = 1 },
         { section = "startup" },
       },

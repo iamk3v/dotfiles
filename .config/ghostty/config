@@ -16,3 +16,6 @@ term = xterm-ghostty
 
 keybind = global:cmd+s=toggle_quick_terminal
 quick-terminal-position = bottom
+
+working-directory = home
+command = "/opt/homebrew/bin/tmux"

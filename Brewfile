@@ -51,6 +51,10 @@ brew "neovim"
 brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
+# OCR tool
+brew "ocrmypdf"
+# CLI AI companion
+brew "opencode"
 # Java development kit (JDK)
 brew "openjdk"
 # Latest Python 3.x version
@@ -78,10 +82,6 @@ brew "zoxide"
 
 # Tiling window manager for macOS
 cask "aerospace"
-# Windows-style app switcher for macOS
-cask "alt-tab"
-# App cleaner
-cask "appcleaner"
 # Secure and open source password manager
 cask "bitwarden"
 # Persistence monitoring 
@@ -126,12 +126,16 @@ cask "obsidian"
 cask "orion"
 # Secure VPN client from Proton
 cask "protonvpn"
+# App cleaner
+cask "pearcleaner"
 # Replacement for spotlight search
 cask "raycast"
 # Apple’s SF Symbols font utility
 cask "sf-symbols"
 # Screenshot tool
 cask "shottr"
+# E2EE messaging app 
+cask "signal"
 # PDF reader with LaTeX annotation support
 cask "skim"
 # Music player
@@ -140,7 +144,5 @@ cask "spotify"
 cask "tor-browser"
 # Virtual machine and emulator for macOS
 cask "utm"
-# Whisky: graphical wrapper for Wine (for running Windows apps)
-cask "whisky"
 # Browser - Firefox Fork
 cask "zen"

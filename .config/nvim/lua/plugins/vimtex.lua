@@ -9,6 +9,17 @@ return {
     vim.g.vimtex_view_skim_sync = 1
     vim.g.vimtex_view_skim_activate = 1
 
+    -- VimTeX compiler config
+    vim.g.vimtex_compiler_latexmk = {
+      options = {
+        "-shell-escape",
+        "-verbose",
+        "-file-line-error",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+      },
+    }
+
     vim.keymap.set("n", "<leader>ll", "<cmd>VimtexCompile<CR>")
     vim.keymap.set("n", "<leader>lk", "<cmd>VimtexStop<CR>")
     vim.keymap.set("n", "<leader>lc", "<cmd>VimtexClean<CR>")

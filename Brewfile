@@ -6,6 +6,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 # Tap for aerospace
 tap "nikitabobko/tap"
+tap "TheBoredTeam/boring-notch"
 
 # --- FORMULAE ---
 
@@ -15,6 +16,8 @@ brew "ack"
 brew "bat"
 # Resource monitor with colorful UI
 brew "btop"
+# Adds features to the notch
+brew "boring-notch"
 # Modern replacement for `ls` with Git support
 brew "eza"
 # Fast, user-friendly alternative to `find`
@@ -120,6 +123,8 @@ cask "knockknock"
 cask "lulu"
 # LaTeX distribution for macOS without GUI
 cask "mactex-no-gui"
+# ZIP tool for macOS
+cask "macpacker"
 # Markdown editor
 cask "obsidian"
 # Lightweight WebKit-based browser
@@ -144,5 +149,7 @@ cask "spotify"
 cask "tor-browser"
 # Virtual machine and emulator for macOS
 cask "utm"
+# All in one tool for macOS
+cask "vorssaint"
 # Browser - Firefox Fork
 cask "zen"

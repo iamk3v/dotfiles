@@ -70,8 +70,11 @@ brew "tmux"
 brew "stow"
 # Display directory tree structure
 brew "tree"
-# Parser generator tool and incremental parsing library
+# Incremental parsing library and parser generator CLI
 brew "tree-sitter"
+brew "tree-sitter-cli"
+# Lua linter for Neovim
+brew "luacheck"
 # Command-line downloader with HTTP/S/FTP support
 brew "wget"
 # TUI file manager written in Rust

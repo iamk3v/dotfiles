@@ -10,6 +10,11 @@ Dotfiles are managed by [GNU Stow](http://www.gnu.org/software/stow/).
 stow . -t ~
 ```
 
+### Neovim
+
+Stow links the Neovim config. Follow the [macOS Neovim setup guide](.config/nvim/README.md)
+to install the command-line tools, language servers, linters, and Tree-sitter parsers.
+
 ### Theme
 Themes are managed by [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 

@@ -3,13 +3,14 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	event = "BufWinEnter",
 	config = function()
+		local function close_buffer(bufnr)
+			Snacks.bufdelete(bufnr)
+		end
+
 		require("bufferline").setup({
 			options = {
-				close_command = "bdelete! %d", -- Command to close buffer
-				right_mouse_command = "bdelete! %d", -- Right-click to close
-				offsets = {
-					{ filetype = "NvimTree", text = "File Explorer", separator = true, text_align = "left" },
-				},
+				close_command = close_buffer,
+				right_mouse_command = close_buffer,
 				diagnostics = "nvim_lsp", -- Show LSP diagnostics
 				separator_style = "thin", -- Style of separator (or "thick", "thin")
 				show_close_icon = false, -- Hide global close icon
@@ -22,7 +23,9 @@ return {
 
 		keymap("n", "<Tab>", ":BufferLineCycleNext<CR>", opts) -- Next buffer
 		keymap("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", opts) -- Previous buffer
-		keymap("n", "<leader>x", ":bdelete<CR>", opts) -- Close current buffer
+		vim.keymap.set("n", "<leader>x", function()
+			close_buffer(0)
+		end, { silent = true, desc = "Close current buffer" })
 		keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts) -- Go to buffer 1
 		keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts) -- Go to buffer 2
 		keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts) -- Go to buffer 3

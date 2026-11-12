@@ -14,7 +14,7 @@ background-blur-radius = 2
 
 term = xterm-ghostty
 
-keybind = global:cmd+s=toggle_quick_terminal
+keybind = global:cmd+shift+s=toggle_quick_terminal
 quick-terminal-position = bottom
 
 working-directory = home

@@ -1,35 +1,36 @@
 return {
-	"mfussenegger/nvim-lint",
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		local lint = require("lint")
+  "mfussenegger/nvim-lint",
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    local lint = require("lint")
+    lint.linters_by_ft = {
+      python = { "ruff", "mypy" },
+      yaml = { "yamllint" },
+      lua = { "luacheck" },
+      c = { "cpplint" },
+      cpp = { "cpplint" },
+    }
 
-		lint.linters_by_ft = {
-			python = { "ruff", "mypy" },
-			yaml = { "yamllint" },
-			lua = { "luacheck" },
-			--  go = { "golangcilint" },
-			c = { "cpplint" },
-			cpp = { "cpplint" },
-			--	javascript = { "biome" },
-			--	typescript = { "biome" },
-			--	javascriptreact = { "biome" },
-			--	typescriptreact = { "biome" },
-			--	json = { "biome" },
-			--	html = { "biome" },
-		}
+    local group = vim.api.nvim_create_augroup("UserLint", { clear = true })
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      group = group,
+      callback = function(event)
+        if vim.bo[event.buf].buftype ~= "" then
+          return
+        end
+        local buffer_only = event.event == "InsertLeave"
+          or vim.bo[event.buf].modified
+          or vim.fn.filereadable(vim.api.nvim_buf_get_name(event.buf)) == 0
+        lint.try_lint(nil, {
+          filter = function(linter)
+            return (linter.stdin or not buffer_only) and vim.fn.executable(linter.cmd) == 1
+          end,
+        })
+      end,
+    })
 
-		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-			group = lint_augroup,
-			callback = function()
-				lint.try_lint()
-			end,
-		})
-
-		vim.keymap.set("n", "<leader>l", function()
-			lint.try_lint()
-		end, { desc = "Trigger linting for current file" })
-	end,
+    vim.keymap.set("n", "<leader>l", function()
+      lint.try_lint()
+    end, { desc = "Lint current file" })
+  end,
 }

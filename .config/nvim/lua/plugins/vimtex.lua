@@ -1,7 +1,6 @@
 return {
   "lervag/vimtex",
-  lazy = true, -- Enable lazy loading
-  ft = "tex",  -- Load VimTeX only for LaTeX files
+  lazy = false, -- Skim calls VimtexInverseSearch before any TeX buffer opens.
   init = function()
     -- VimTeX basic config
     vim.g.vimtex_view_method = "skim"
@@ -12,7 +11,6 @@ return {
     -- VimTeX compiler config
     vim.g.vimtex_compiler_latexmk = {
       options = {
-        "-shell-escape",
         "-verbose",
         "-file-line-error",
         "-synctex=1",
